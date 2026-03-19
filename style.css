@@ -1,0 +1,59 @@
+/* BOOK FIX */
+.book{
+  width:90%;
+  max-width:320px;
+  height:420px;
+  margin:20px auto;
+  position:relative;
+  perspective:1200px;
+}
+
+.page{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:white;
+  border-radius:10px;
+  transform-origin:left;
+  transition:transform 0.8s ease, z-index 0.5s;
+  backface-visibility:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  padding:10px;
+}
+
+.page img{
+  width:100%;
+  height:70%;
+  border-radius:10px;
+}
+
+/* TURN FIX */
+.page.flipped{
+  transform:rotateY(-180deg);
+  z-index:0 !important;
+}
+
+/* OUTRO */
+.final-text{
+  margin-top:100px;
+  color:white;
+  font-size:24px;
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* FLOWER */
+.flower{
+  position:fixed;
+  top:-20px;
+  font-size:20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translateY(100vh);}
+}
