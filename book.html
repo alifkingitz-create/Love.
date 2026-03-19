@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Book 💕</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="music" loop autoplay>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<h2 class="ribbon">🎀 Our Love Book 🎀</h2>
+
+<div class="book">
+
+  <div class="page" style="z-index:7">Cover 💖</div>
+  <div class="page" style="z-index:6"><img src="img1.jpg"></div>
+  <div class="page" style="z-index:5"><img src="img2.jpg"></div>
+  <div class="page" style="z-index:4"><img src="img3.jpg"></div>
+  <div class="page" style="z-index:3"><img src="img4.jpg"></div>
+  <div class="page" style="z-index:2"><img src="img5.jpg"></div>
+  <div class="page" style="z-index:1"><img src="img6.jpg"></div>
+
+</div>
+
+<button class="next-btn" onclick="turnPage()">➜</button>
+
+<div id="outro" class="hidden">
+  <h1 id="typingText" class="final-text"></h1>
+</div>
+
+<script>
+let pages = document.querySelectorAll(".page");
+let currentPage = 0;
+
+// MUSIC CONTINUE
+let music = document.getElementById("music");
+if(localStorage.getItem("playMusic")=="yes"){
+  music.play();
+}
+
+// PAGE TURN FIX
+function turnPage(){
+  if(currentPage < pages.length){
+    pages[currentPage].classList.add("flipped");
+    currentPage++;
+  } else {
+    showOutro();
+  }
+}
+
+// TYPING
+function typeWriter(text, i=0){
+  if(i < text.length){
+    document.getElementById("typingText").innerHTML += text.charAt(i);
+    setTimeout(()=>typeWriter(text, i+1), 50);
+  }
+}
+
+// OUTRO
+function showOutro(){
+  document.getElementById("outro").classList.remove("hidden");
+
+  typeWriter("Thank You For Loving Me 💖 You Are My Forever ❤️");
+
+  setInterval(()=>{
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerText="🌸";
+    f.style.left=Math.random()*100+"vw";
+    f.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),5000);
+  },200);
+}
+</script>
+
+</body>
+</html>
